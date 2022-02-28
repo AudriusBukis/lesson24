@@ -5,7 +5,7 @@ namespace Lesson24.Methods
 {
     public class LoginRepository
     {
-       
+        internal FileService ReadGiudID = new("CardIDList.txt");
         public Client SelectClient(int index)
         {
             var clientList = new ClientRepository().ReadAllClientsFromFile();
@@ -16,13 +16,10 @@ namespace Lesson24.Methods
         {
             return ReadCardIDFromDataBase().Contains(client.CardID);
         }
-
-        
         internal  List<Guid> ReadCardIDFromDataBase()
         {
             var guidIDList = new List<Guid>();
-            var readGiudID = new FileService("CardIDList.txt");
-            var stringList = readGiudID.GetAllLines();
+            var stringList = ReadGiudID.GetAllLines();
             foreach (var str in stringList)
             {
                 guidIDList.Add(ExceptionsHandle.FromStringToGuid(str));

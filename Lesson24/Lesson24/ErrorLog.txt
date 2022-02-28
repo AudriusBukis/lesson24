@@ -1071,3 +1071,24 @@ Stack Trace:    at System.Number.ThrowOverflowOrFormatException(ParsingStatus st
    at System.Double.Parse(String s, IFormatProvider provider)
    at Lesson24.Methods.ExceptionsHandle.FromStringToDouble(String str) in C:\Users\audri\Documents\Code_Academy_mokymai\lesson24\Lesson24\Lesson24.Methods\ExceptionsHandle.cs:line 47
 ===========End============= 2/28/2022 6:42:25 PM
+=============Error Logging ===========
+===========Start============= 2/28/2022 7:28:27 PM
+Error Message: Input string was not in a correct format.
+Stack Trace:    at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Double.Parse(String s, IFormatProvider provider)
+   at Lesson24.Methods.ExceptionsHandle.FromStringToDouble(String str) in C:\Users\audri\Documents\Code_Academy_mokymai\lesson24\Lesson24\Lesson24.Methods\ExceptionsHandle.cs:line 47
+===========End============= 2/28/2022 7:28:27 PM
+=============Error Logging ===========
+===========Start============= 2/28/2022 7:28:27 PM
+Error Message: Input string was not in a correct format.
+Stack Trace:    at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Double.Parse(String s, IFormatProvider provider)
+   at Lesson24.Methods.ExceptionsHandle.FromStringToDouble(String str) in C:\Users\audri\Documents\Code_Academy_mokymai\lesson24\Lesson24\Lesson24.Methods\ExceptionsHandle.cs:line 47
+===========End============= 2/28/2022 7:28:27 PM
+=============Error Logging ===========
+===========Start============= 2/28/2022 7:28:27 PM
+Error Message: Input string was not in a correct format.
+Stack Trace:    at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Double.Parse(String s, IFormatProvider provider)
+   at Lesson24.Methods.ExceptionsHandle.FromStringToDouble(String str) in C:\Users\audri\Documents\Code_Academy_mokymai\lesson24\Lesson24\Lesson24.Methods\ExceptionsHandle.cs:line 47
+===========End============= 2/28/2022 7:28:27 PM

@@ -1,6 +1,5 @@
 ﻿using Lesson24.Methods;
 using System;
-using System.Collections.Generic;
 
 namespace Lesson24
 {
@@ -10,7 +9,8 @@ namespace Lesson24
         static void Main(string[] args)
         {
             Console.WriteLine("Lesson 24 HomeWork cash machine");
-            while(true)
+            bool exit = false;
+            while (!exit)
             {
 
                 var clientRep = new ClientRepository();
@@ -43,7 +43,6 @@ namespace Lesson24
                             
                             Console.WriteLine("you card is valid enter the PIN number");
                             short attempts = 1;
-                            bool exit = false;
                             while (true)
                             {
 
@@ -65,26 +64,19 @@ namespace Lesson24
                                 if (attempts == 3)
                                 {
                                     Console.WriteLine("You entered 3 times incorect pin " +
-                                        "\nPlease try again later" +
-                                        "\nPress any key to continue");
-                                    Console.ReadKey();
+                                        "\nPlease try again later");
+                                    exit = true;
                                     break;
                                 }
                             }
-                            if(!exit)
+                            if(exit)
                             {
-                                Console.WriteLine("Take your card and try next time");
+                                Console.WriteLine("Take your card");
                                 Console.WriteLine("Press any key to continue");
                                 Console.ReadKey();
                                 break;
                             }
-                            else
-                            {
-                                Console.WriteLine("Take your card ");
-                                Console.WriteLine("Press any key to continue");
-                                Console.ReadKey();
-                                break;
-                            }
+
                         }
                         else
                         {

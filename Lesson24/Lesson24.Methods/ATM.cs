@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -6,16 +7,15 @@ namespace Lesson24.Methods
 {
     public class ATM
     {
-
+        internal static ClientRepository clientRep = new();
+        internal List<Client> clientList = clientRep.ReadAllClientsFromFile();
+        internal Client clientInATM = new();
         public void MainWindow(Client client)
         {
-            var clientRep = new ClientRepository();
-            var clientList = clientRep.ReadAllClientsFromFile();
-            var clientInATM = new Client();
+            bool exitATM = false;
             clientInATM = clientList.Single(x => x.CardID == client.CardID);
-            while (true)
+            while (!exitATM)
             {
-
                 Console.Clear();
                 Console.WriteLine("Welcom to cash masine ATM");
                 Console.WriteLine("Choose what you want to do");
@@ -23,53 +23,46 @@ namespace Lesson24.Methods
                 Console.WriteLine("     2 see last 5 transactions");
                 Console.WriteLine("     3 Cashout");
                 Console.WriteLine("     4 Exit");
-                if (Int32.TryParse(Console.ReadLine(), out int selection))
+                var selection = InputCheck(Console.ReadLine());
+                if (selection > 0 && selection < 5)
                 {
-                    bool exitATM = false;
-                    if (selection > 0 && selection < 5)
+                    switch (selection)
                     {
-                        switch (selection)
-                        {
-                            case 1:
-                                SeeCashInATM(clientInATM);
-                                break;
-                            case 2:
-                                SeeLast5Transactions(clientInATM);
-                                break;
-                            case 3:
-                                if (CachLimitation(clientInATM))
-                                {
-                                    TakeCash(clientInATM);
-                                    clientRep.WriteAllClientsToFile(clientList);
-                                }
-                                break;
-                            case 4:
-                                exitATM = true;
-                                break;
-
-                        }
-                        if (exitATM) break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("No such comand");
-                        Console.WriteLine("Press any key to continue");
-                        Console.ReadKey();
-                        continue;
+                        case 1:
+                            SeeCashInATM(clientInATM);
+                            break;
+                        case 2:
+                            SeeLast5Transactions(clientInATM);
+                            break;
+                        case 3:
+                            if (CachLimitation(clientInATM))
+                            {
+                                TakeCash(clientInATM);
+                                clientRep.WriteAllClientsToFile(clientList);
+                            }
+                            break;
+                        case 4:
+                            exitATM = true;
+                            break;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("you entered not the number");
+                    Console.WriteLine("No such comand or you entered not the number");
                     Console.WriteLine("Press any key to continue");
                     Console.ReadKey();
                     continue;
                 }
-
-
-
             }
 
+        }
+        public int InputCheck(string str)
+        {
+             if (Int32.TryParse(str, out int selection))
+             {
+                return selection;
+             }
+             return 0;
         }
         public void SeeCashInATM(Client client)
         {
@@ -89,7 +82,9 @@ namespace Lesson24.Methods
             if (allOperationList.Count <= 5)
             {
                 foreach (var operation in allOperationList)
-                { Console.WriteLine($"No.{allOperationList.IndexOf(operation) + 1} {operation}"); }
+                { 
+                    Console.WriteLine($"No.{allOperationList.IndexOf(operation) + 1} {operation}"); 
+                }
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
             }

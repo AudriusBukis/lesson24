@@ -9,12 +9,13 @@ namespace Lesson24.Methods
 {
     public class ClientRepository
     {
+        internal FileService ReadClients = new("UserInfo.txt");
         public List<Client> ReadAllClientsFromFile()
         {
             try
             {
                 var clientList = new List<Client>();
-                var ReadClients = new FileService("UserInfo.txt");
+                
                 var stringList = ReadClients.GetAllLines();
                 for (int i = 0; i < stringList.Count; i++)
                 {

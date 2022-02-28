@@ -6,8 +6,8 @@ namespace Lesson24.Methods
 {
     public class OperationDBRepository 
     {
+        internal static FileService ReadClients = new FileService("OperationDB.txt");
         public List<Operation> OperationList { get; internal set;}
-
         public OperationDBRepository()
         {
             OperationList = ReadOperationDB();
@@ -17,7 +17,6 @@ namespace Lesson24.Methods
             try
             {
                 var operationList = new List<Operation>();
-                var ReadClients = new FileService("OperationDB.txt");
                 var stringList = ReadClients.GetAllLines();
                 for (int i = 0; i < stringList.Count; i++)
                 {

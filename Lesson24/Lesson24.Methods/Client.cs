@@ -4,6 +4,7 @@ namespace Lesson24.Methods
 {
     public class Client
     {
+        internal FileService ToFile = new ($"UserInfo.txt");
         public string Name { get;  set; }
         public string LastName { get; set; }
         public string PinNumber {get; set; }
@@ -17,7 +18,6 @@ namespace Lesson24.Methods
             PinNumber = pinNumber;
             CardID = GenerateCardID();
             CardMoneyAmount = MoneyGenerator();
-            var ToFile = new FileService($"UserInfo.txt");
             ToFile.AppendText(ToString());
             AccountGenerationInfo();
         }
@@ -28,7 +28,6 @@ namespace Lesson24.Methods
             PinNumber = "0000";
             CardID = Guid.NewGuid();
             CardMoneyAmount = MoneyGenerator();
-            var ToFile = new FileService($"UserInfo.txt");
             ToFile.AppendText(ToString());
            
 

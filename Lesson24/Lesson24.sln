@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson24", "Lesson24\Lesson24.csproj", "{170EAD10-C9D6-46B0-83BF-E800F1CFAAC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson24.Methods", "Lesson24.Methods\Lesson24.Methods.csproj", "{29068101-749B-4EEE-AF47-FD60512BF782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{170EAD10-C9D6-46B0-83BF-E800F1CFAAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170EAD10-C9D6-46B0-83BF-E800F1CFAAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170EAD10-C9D6-46B0-83BF-E800F1CFAAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170EAD10-C9D6-46B0-83BF-E800F1CFAAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29068101-749B-4EEE-AF47-FD60512BF782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29068101-749B-4EEE-AF47-FD60512BF782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29068101-749B-4EEE-AF47-FD60512BF782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29068101-749B-4EEE-AF47-FD60512BF782}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {420DCA9A-03B0-469B-98D5-2825601A55ED}
+	EndGlobalSection
+EndGlobal

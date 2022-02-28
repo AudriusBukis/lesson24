@@ -1,3 +1,4 @@
-Audrius;Bukis;1985;c19b8887-dc6b-42a7-9321-264ecd9e7773;8271
+Audrius;Bukis;1985;c19b8887-dc6b-42a7-9321-264ecd9e7773;7261
 Antanas;Pranauskas;1234;a1068529-0eba-47d4-a825-86252cfbb908;6500
 Banditas;Vagis;0000;9e6c9a5c-a9f6-47c9-a119-daf37e21acfa;6518
+Paranas;Pranauskas;4321;d560b7f7-ee22-4615-b40f-d0219b558d93;7751

@@ -11,3 +11,9 @@ a1068529-0eba-47d4-a825-86252cfbb908;Withdraw money;155; date ;2/28/2022 3:40:50
 a1068529-0eba-47d4-a825-86252cfbb908;Withdraw money;100; date ;2/28/2022 3:41:49 PM; : money in the acount is ;6466; Euro
 a1068529-0eba-47d4-a825-86252cfbb908;Withdraw money;55; date ;2/28/2022 4:18:56 PM; : money in the acount is ;6511; Euro
 a1068529-0eba-47d4-a825-86252cfbb908;Withdraw money;11; date ;2/28/2022 4:20:34 PM; : money in the acount is ;6500; Euro
+c19b8887-dc6b-42a7-9321-264ecd9e7773;Withdraw money;500; date ;2/28/2022 6:36:26 PM; : money in the acount is ;7771; Euro
+c19b8887-dc6b-42a7-9321-264ecd9e7773;Withdraw money;250; date ;2/28/2022 6:36:40 PM; : money in the acount is ;7521; Euro
+c19b8887-dc6b-42a7-9321-264ecd9e7773;Withdraw money;260; date ;2/28/2022 6:37:06 PM; : money in the acount is ;7261; Euro
+d560b7f7-ee22-4615-b40f-d0219b558d93;Account created;; date ;2/28/2022 6:39:51 PM; : money in the acount is ;7951; Euro
+d560b7f7-ee22-4615-b40f-d0219b558d93;Withdraw money;100; date ;2/28/2022 6:42:13 PM; : money in the acount is ;7851; Euro
+d560b7f7-ee22-4615-b40f-d0219b558d93;Withdraw money;100; date ;2/28/2022 6:42:25 PM; : money in the acount is ;7751; Euro

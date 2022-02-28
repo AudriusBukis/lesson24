@@ -6,7 +6,7 @@ namespace Lesson24.Methods
 {
     public class ATM
     {
-        
+
         public void MainWindow(Client client)
         {
             var clientRep = new ClientRepository();
@@ -37,9 +37,11 @@ namespace Lesson24.Methods
                                 SeeLast5Transactions(clientInATM);
                                 break;
                             case 3:
-                                TakeCash(clientInATM);
-                                clientRep.WriteAllClientsToFile(clientList);
-
+                                if (CachLimitation(clientInATM))
+                                {
+                                    TakeCash(clientInATM);
+                                    clientRep.WriteAllClientsToFile(clientList);
+                                }
                                 break;
                             case 4:
                                 exitATM = true;
@@ -65,9 +67,9 @@ namespace Lesson24.Methods
                 }
 
 
-                
+
             }
-            
+
         }
         public void SeeCashInATM(Client client)
         {
@@ -86,8 +88,8 @@ namespace Lesson24.Methods
             var allOperationList = operations.GetClientHistoryOperations(client.CardID).ToList();
             if (allOperationList.Count <= 5)
             {
-                foreach (var operation in allOperationList) 
-                        { Console.WriteLine($"No.{allOperationList.IndexOf(operation)+1} {operation}");}
+                foreach (var operation in allOperationList)
+                { Console.WriteLine($"No.{allOperationList.IndexOf(operation) + 1} {operation}"); }
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
             }
@@ -97,7 +99,7 @@ namespace Lesson24.Methods
                 allOperationList.Sort(operationComparer);
                 for (int i = 0; i < 5; i++)
                 {
-                    { Console.WriteLine($"No.{allOperationList.IndexOf(allOperationList[i])+1} {allOperationList[i]}"); }
+                    { Console.WriteLine($"No.{allOperationList.IndexOf(allOperationList[i]) + 1} {allOperationList[i]}"); }
                 }
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
@@ -108,10 +110,29 @@ namespace Lesson24.Methods
             Console.WriteLine("Enter the amount of money you want to withdraw ");
             if (Double.TryParse(Console.ReadLine(), out double money))
             {
-                var toFile = new FileService("OperationDB.txt");
-                client.CardMoneyAmount = client.CardMoneyAmount - money;
-                toFile.AppendText($"{client.CardID};Withdraw money;{money}; date ;{DateTime.Now}; : money in the acount is ;{client.CardMoneyAmount}; Euro");
-               
+                var operations = new OperationDBRepository();
+                var allOperationList = operations.GetClientHistoryOperations(client.CardID).ToList();
+                var TodayOperationList = allOperationList.Where(x => x.OperationDate.Day.Equals(DateTime.Today.Day)).ToList();
+                var sumOfCashTaked = 0D;
+                foreach (var operation in TodayOperationList)
+                {
+                    sumOfCashTaked += operation.CashOutSum;
+                }
+                if (sumOfCashTaked + money > 1000)
+                {
+                    Console.WriteLine("You today limit 1000 eu will be exceeded ");
+                    Console.WriteLine($"You can today take {1000-sumOfCashTaked} Eu");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    var toFile = new FileService("OperationDB.txt");
+                    client.CardMoneyAmount = client.CardMoneyAmount - money;
+                    toFile.AppendText($"{client.CardID};Withdraw money;{money}; date ;{DateTime.Now}; : money in the acount is ;{client.CardMoneyAmount}; Euro");
+                }
+                
+
             }
             else
             {
@@ -120,6 +141,33 @@ namespace Lesson24.Methods
                 Console.ReadKey();
             }
         }
+        public bool CachLimitation(Client client)
+        {
+            var operations = new OperationDBRepository();
+            var allOperationList = operations.GetClientHistoryOperations(client.CardID).ToList();
+            var TodayOperationList = allOperationList.Where(x => x.OperationDate.Day.Equals(DateTime.Today.Day)).ToList();
+            var sumOfCashTaked = 0D;
+            foreach (var operation in TodayOperationList)
+            {
+                sumOfCashTaked += operation.CashOutSum;
+            }
 
+            if (TodayOperationList.Count() > 10)
+            {
+                Console.WriteLine("You reach your today limit 10 operations");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                return false;
+            }
+            else if (1000 <= sumOfCashTaked)
+            {
+                Console.WriteLine("You reach your today limit 1000 eu");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                return false;
+
+            }
+            return true;
+        }
     }
 }
